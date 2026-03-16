@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<head>
+    <title> profile ★ willayne</title>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Chakra+Petch:ital,wght@0,400;0,600;1,400&family=Press+Start+2P&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        /* BACKGROUND */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #ffc0cb; /* hot pink base */
+            background-image: 
+                               repeating-linear-gradient(45deg, rgba(255,255,255,0.3) 0px, rgba(255,255,255,0.3) 2px, transparent 2px, transparent 8px);
+            font-family: 'Chakra Petch', sans-serif;
+            color: #110022;
+            line-height: 1.4;
+            padding: 1.5rem;
+        }
+
+        /* container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 1.8rem;
+            position: relative;
+        }
+
+        /* --- MAIN CONTENT (LEFT) --- */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* CARD STYLE */
+        .card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border: 3px solid #ff44e6;
+            border-right-width: 6px;
+            border-bottom-width: 6px;
+            border-radius: 40px 20px 40px 10px;
+            padding: 1.8rem 2rem;
+            box-shadow: 10px 10px 0 #3d00b0, 0 0 0 2px #f9f06d inset, 0 0 20px #ffb3fe;
+            transition: 0.15s ease;
+            color: #110022;
+            position: relative;
+            transform: rotate(0.2deg);
+        }
+
+        .card:hover {
+            transform: scale(1.01) rotate(0deg);
+            box-shadow: 15px 15px 0 #9900ff, 0 0 30px cyan;
+        }
+
+        h2 {
+            font-family: 'Audiowide', cursive;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            background: linear-gradient(145deg, #ff00aa, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 4px 4px 0 #fffd9f, 0 0 10px white;
+            margin-bottom: 1.5rem;
+            border-bottom: 4px dotted #ffb2ef;
+            padding-bottom: 0.5rem;
+        }
+
+        /* ABOUT ME */
+        .about-flex {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .profile-pic {
+            width: 130px;
+            height: 130px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* organic blob */
+            object-fit: cover;
+            border: 6px double #fb04bd;
+            box-shadow: 8px 8px 0 #16f4d0, -5px -5px 0 #f4d106;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .tagline {
+            background: #f6ff8e;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px 10px 50px 10px;
+            border: 3px solid black;
+            box-shadow: 5px 5px 0 magenta;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+
+        /* VITALS section — new! birthday, zodiac, mbti, pronouns */
+        .vitals-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem 1.5rem;
+            background: #bdfff0;
+            border: 4mm ridge rgba(255, 0, 221, 0.6);
+            border-radius: 30px 0 30px 0;
+            padding: 1.2rem 1.8rem;
+            margin-top: 1.2rem;
+            font-weight: bold;
+            box-shadow: inset 0 0 0 2px white, 0 0 0 3px black, 10px 10px 0 #b200ff;
+        }
+
+        .vital-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .vital-icon {
+            background: #ff44e6;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            border: 2px solid yellow;
+            transform: rotate(5deg);
+        }
+
+        /* GALLERY */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+}
+
+        .gallery-grid img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 4px solid white;
+            box-shadow: 8px 8px 0 #ff33cc, 0 0 0 2px black;
+            transition: 0.1s linear;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: -12px -12px 0 #3aff9e, 0 0 0 4px magenta;
+        }
+
+        /* LIKES/DISLIKES — split bright boxes */
+        .likes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+        }
+
+        .list-block {
+            background: #ffbcf6;
+            border: 5px dotted #f5a105;
+            border-radius: 80px 20px 80px 20px;
+            padding: 1.5rem 1.5rem;
+            box-shadow: 15px 15px 0 cyan, 0 0 0 4px white;
+        }
+
+        .list-block h3 {
+            font-size: 1.8rem;
+            font-family: 'Press Start 2P', cursive;
+            line-height: 1.4;
+            margin-bottom: 1.2rem;
+            text-decoration: underline wavy #ff0080;
+        }
+
+        .list-block li {
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            border: 2px solid black;
+        }
+
+        .list-block li span {
+            background: gold;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            border: 3px double black;
+        }
+
+        /* FAVE MEDIA */
+        .media-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .media-item {
+            flex: 1 1 130px;
+            max-width: 170px;
+            background: white;
+            padding: 1rem 0.5rem;
+            border-radius: 12px;
+            border: 5px solid #fe19af;
+            box-shadow: 12px 12px 0 #3cffc7;
+            transform: rotate(1deg);
+        }
+
+        .media-item img {
+            width: 100%;
+            aspect-ratio: 1/1.3;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 4px solid yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- LEFT MAIN CONTENT -->
+        <div class="main-content">
+            <!-- ABOUT ME card -->
+            <div class="card">
+                <h2>✧ about me ✧</h2>
+                <div class="about-flex">
+                    <img src="https://picsum.photos/id/1005/300/300" alt="profile" class="profile-pic">
+                    <div class="about-text">
+                        <p><strong style="font-size:1.8rem; color:#ce00ce;">Willayne Morota </strong> <span style="font-size:1.3rem;">✨</span></p>
+                        <span class="tagline">☆ﾟ.*･｡ﾟdigital dreamer ﾟ･*.</span>
+                    </div>
+                </div>
+
+                <!--SECTION: birthday, zodiac, mbti, pronouns etc -->
+                <div class="vitals-grid">
+                    <div class="vital-item"><span class="vital-icon">🎂</span> 11.08.2004 </div>
+                    <div class="vital-item"><span class="vital-icon">♏</span> scorpio</div>
+                    <div class="vital-item"><span class="vital-icon">🔮</span> INFP</div>
+                    <div class="vital-item"><span class="vital-icon">⚥</span> she/her</div>
+                </div>
+
+                <div style="margin-top:1rem; background:#fb9; padding:0.5rem; border-radius:80px;">
+                    🌸 collector of cd-roms, digital pets & vhs tapes 🌸
+                </div>
+            </div>
+
+            <!-- GALLERY card (lots of photos) -->
+            <div class="card">
+                <h2>📸 gallery </h2>
+                <div class="gallery-grid">
+                    <img src="https://i.pinimg.com/736x/af/b3/a9/afb3a94f9d1a1ec827f8f962fa99a41c.jpg" alt="ds game">
+                    <img src="https://i.pinimg.com/736x/5e/05/13/5e05135ae0f1efd6a657333eae32c7d5.jpg" alt="stop">
+                    <img src="https://i.pinimg.com/736x/0a/61/9e/0a619eb74e8068910a366de84c6c196e.jpg" alt="music">
+                    <img src="https://i.pinimg.com/1200x/8b/2d/ab/8b2dab893a55ab641a6efc5923410ecb.jpg" alt="flower">
+                    <img src="https://i.pinimg.com/736x/12/d7/1c/12d71cd7071ae491cbc6b74844cf0231.jpg" alt="8ball">
+                    <img src="https://i.pinimg.com/736x/bd/1b/1c/bd1b1c26ab0c7991c6e47fea1b8de425.jpg" alt="nails">
+                    <img src="https://i.pinimg.com/736x/d0/15/2c/d0152c03a4a7b1d479e0910cc654584d.jpg" alt="idk??">
+                    <img src="https://i.pinimg.com/1200x/6b/ef/f3/6beff328c333461a0ad8931dfe777b16.jpg" alt="strawberry">
+                    <img src="https://i.pinimg.com/736x/df/24/87/df248742eeeac6525bc3ff7cae92b97b.jpg" alt="quote">
+            </div>
+ </div>
+
+            <!-- LIKES / DISLIKES -->
+            <div class="card">
+                <h2>⚯ likes / dislikes</h2>
+                <div class="likes-grid">
+                    <div class="list-block">
+                        <h3>❤️ LIKES</h3>
+                        <ul>
+                            <li><span>🍰</span> visiting cafes</li>
+                            <li><span>📼</span> animanga</li>
+                            <li><span>👗</span> thrifting</li>
+                            <li><span>🎧</span> listening to different music genres</li>
+                            <li><span>🎮</span> video games</li>
+                        </ul>
+                    </div>
+                    <div class="list-block">
+                        <h3>🖤 DISLIKES</h3>
+                        <ul>
+                            <li><span>☕</span> bitter coffee</li>
+                            <li><span>🌡️</span>unreliable weather</li>
+                            <li><span>🚉</span> TTC delays</li>
+                            <li><span>🕷️</span> insects</li>
+                            <li><span>🚶‍➡️</span> slow walkers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAVE MEDIA -->
+ <div class="card">
+    <h2>📺 currently consuming</h2>
+    <p style="font-size: 0.9rem; margin-top: -0.8rem; margin-bottom: 1.5rem; opacity: 0.8; font-family: 'Space Mono', monospace;">
+    </p>
+
+    <!-- 4-column grid for categories -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
+
+        <!-- WATCHING -->
+        <div>
+            <h3 style="font-family: 'Audiowide', cursive; font-size: 1.2rem; margin-bottom: 1rem; color: #cc00cc;">👀 watching</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                <!-- image + text pair -->
+                <div style="text-align: center;">
+                    <img src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p19204904_b_v13_al.jpg" alt="Lupin" style="width: 100px; height: 140px; object-fit: cover; border-radius: 12px; border: 4px solid white; box-shadow: 6px 6px 0 #ff44e6;">
+                    <p style="margin-top: 0.3rem; font-size: 0.9rem; background: white; padding: 0.2rem 0.8rem; border-radius: 30px; border: 2px solid black; display: inline-block;">LUPIN</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- READING -->
+        <div>
+            <h3 style="font-family: 'Audiowide', cursive; font-size: 1.2rem; margin-bottom: 1rem; color: #00aa88;">📖 reading</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                <div style="text-align: center;">
+                    <img src="https://preview.redd.it/one-piece-volume-113-cover-finalized-v0-lei0apulo6wf1.jpeg?width=640&crop=smart&auto=webp&s=4d00e91c64e0a434843e6505c28cbba70b34360e" alt="One Piece" style="width: 100px; height: 140px; object-fit: cover; border-radius: 12px; border: 4px solid white; box-shadow: 6px 6px 0 #ff44e6;">
+                    <p style="margin-top: 0.3rem; font-size: 0.9rem; background: white; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 30px; border: 2px solid black;"> One Piece </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PLAYING -->
+        <div>
+            <h3 style="font-family: 'Audiowide', cursive; font-size: 1.2rem; margin-bottom: 1rem; color: #ff8800;">🎮 playing</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                <div style="text-align: center;">
+                    <img src="https://m.media-amazon.com/images/M/MV5BYjk4ZmNmNzUtZGRlYy00ZGYxLTlkNmItYWNhNGMxZDZhMDMwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Twisted Wonderland" style="width: 100px; height: 140px; object-fit: cover; border-radius: 12px; border: 4px solid white; box-shadow: 6px 6px 0 #ff44e6;">
+                    <p style="margin-top: 0.3rem; font-size: 0.9rem; background: white; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 30px; border: 2px solid black;">Twisted Wonderland</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LISTENING -->
+        <div>
+            <h3 style="font-family: 'Audiowide', cursive; font-size: 1.2rem; margin-bottom: 1rem; color: #aa44ff;">🎧 listening</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                <div style="text-align: center;">
+                    <img src="https://preview.redd.it/bruno-mars-the-romantic-album-february-27th-v0-h9a9x1drhzbg1.jpeg?width=1080&crop=smart&auto=webp&s=fbcee10e35265afbc1f7278faf0885d1b9c39ce6" alt="Bruno Mars- The Romantic" style="width: 100px; height: 140px; object-fit: cover; border-radius: 12px; border: 4px solid white; box-shadow: 6px 6px 0 #ff44e6;">
+                    <p style="margin-top: 0.3rem; font-size: 0.9rem; background: white; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 30px; border: 2px solid black;">Bruno Mars- The Romantic</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- footer -->
+    <p style="margin-top: 1.8rem; text-align: right; font-size: 0.8rem; opacity: 0.6;">⋆｡°✩ analog feed ✩°｡⋆</p>
+</div>
+        </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
